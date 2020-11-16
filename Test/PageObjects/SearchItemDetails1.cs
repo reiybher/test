@@ -28,10 +28,6 @@ namespace Test.PageObjects
         [FindsBy(How = How.Name, Using = "qty")]
         private IWebElement qty;
 
-        public void IncreaseQty(int config_qty)
-        {
-            qty.SetValue(Convert.ToString(config_qty));
-        }
 
         public string SpecialPriceAsString => specialPrice.Text;
      
@@ -43,6 +39,11 @@ namespace Test.PageObjects
             addToCart.Click();
             wait.Until(c => c.FindElement(By.CssSelector(".right > div:nth-child(1) > span:nth-child(1)")));
             return new Cart(driver);
-        }       
+        }
+
+        public void IncreaseQty(int config_qty)
+        {
+            qty.SetValue(Convert.ToString(config_qty));
+        }
     }
 }
